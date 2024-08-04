@@ -10,15 +10,21 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     </head>
     <body class="antialiased">
-       <h1>Blog Name</h1>
-       <div closs='posts'>
-           @foreach($posts as $post)
-           <div class='post'>
-              <a href="/posts/{{ $post->id}}"><h2 class='title'>{{ $post->title}}</h2></a>
+       <h1　class='title' >
+       {{$post ->title}}
+       </h1>
+    
+       <div closs='content'>
+        
+           <div class='content_post'>
+               <h3>本文</h3>
+               <h2 class='title'>{{ $post->title}}</h2>
                <p class='body'>{{$post->body}}</p>
            </div>
-           @endforeach
        </div>
-       <div class='paginate'>{{ $posts->links()}}</div>
+       <div class='footer'>
+           <a href="/">戻る</a>
+            </div>
+       
     </body>
 </html>
