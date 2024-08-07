@@ -1,3 +1,7 @@
+<x-app-layout>
+    <x-slot name="header">
+        (index）
+    </x-slot>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -5,7 +9,7 @@
       
         <title>Blog</title>
 
-        <!-- Fonts -->
+         Fonts 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     </head>
@@ -26,7 +30,16 @@
                </form>
            </div>
            @endforeach
-       </div>
+          @foreach($questions as $question)
+            <div>
+                <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                    {{ $question['title'] }}
+                </a>
+            </div>
+        @endforeach
+       </div> 
+       <p>ログインユーザー： {{ Auth::user()->name }}</p>
+       
        <div class='paginate'>{{ $posts->links()}}</div>
        <script>
            function deletePost(id){
@@ -34,10 +47,10 @@
                
                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
                    document.getElementById(`form_${id}`).submit();
-                   
-               }
+                  }
            }
            
        </script>
     </body>
 </html>
+</x-app-layout>
